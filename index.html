@@ -4,1187 +4,1576 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TechRent — Dark Steel · Картки оголошень</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Pixe - Оренда спецтехніки поруч</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;500;600;700;800;900&family=Outfit:wght@300;400;500;600&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
+/* ── VARIABLES ── */
 :root {
---bg-primary: #0F1117;
---bg-secondary: #161B27;
---bg-card: #1C2333;
---bg-hover: #212B3D;
---accent: #00D4FF;
---accent-dark: #0099CC;
---accent-glow: rgba(0,212,255,0.12);
---accent-glow2: rgba(0,212,255,0.06);
---success: #00FF94;
---success-bg: rgba(0,255,148,0.1);
---warning: #FFB800;
---danger: #FF2D55;
---danger-bg: rgba(255,45,85,0.12);
---text-primary: #F0F4FF;
---text-secondary:#8892A4;
---text-disabled: #4A5568;
---border: #2A3347;
---border-accent: rgba(0,212,255,0.25);
+--accent: #7B6FF0;
+--accent-dark: #6358D4;
+--accent-light: #EEEEFF;
+--accent-filter: #6C63E8;
+--accent-btn: #7B6FF0;
+
+–bg: #FFFFFF;
+–bg-gray: #F5F5FA;
+–bg-card: #FFFFFF;
+
+–text-1: #1A1A2E;
+–text-2: #6B6B80;
+–text-3: #A0A0B2;
+
+–border: #E8E8F0;
+–success: #3DB87A;
+–success-bg: #EDFAF4;
+–star: #F59E0B;
+–danger: #E5194B;
+
+–shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+–shadow-md: 0 4px 20px rgba(0,0,0,0.08);
+–shadow-lg: 0 8px 32px rgba(0,0,0,0.10);
+–shadow-accent: 0 4px 20px rgba(123,111,240,0.25);
+
+–radius-sm: 8px;
+–radius-md: 12px;
+–radius-lg: 16px;
+–radius-xl: 24px;
+
+–max-w: 1280px;
 }
 
+/* ── RESET ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: ‘Outfit’, sans-serif; background: var(–bg); color: var(–text-1); overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+img { display: block; max-width: 100%; }
+button { cursor: pointer; font-family: inherit; border: none; background: none; }
+select { font-family: inherit; }
 
-body {
-font-family: ‘DM Sans’, sans-serif;
-background: var(--bg-primary);
-color: var(--text-primary);
-min-height: 100vh;
-padding: 48px 32px;
-}
+/* ── CONTAINER ── */
+.container { max-width: var(–max-w); margin: 0 auto; padding: 0 24px; }
 
-/* noise */
-body::after {
-content:’’;
-position:fixed;
-inset:0;
-background-image:url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 200 200’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘n’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.85’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23n)’ opacity=‘0.035’/%3E%3C/svg%3E”);
-pointer-events:none;
-z-index:9999;
+/* ════════════════════════════
+HEADER
+════════════════════════════ */
+.header {
+position: sticky; top: 0; z-index: 200;
+background: rgba(255,255,255,0.95);
+backdrop-filter: blur(12px);
+border-bottom: 1px solid var(–border);
+height: 64px;
 }
-
-/* ── PAGE HEADER ── */
-.page-header {
-text-align: center;
-margin-bottom: 56px;
-}
-.page-eyebrow {
-display: inline-block;
-font-size: 11px;
-font-weight: 600;
-letter-spacing: 2.5px;
-text-transform: uppercase;
-color: var(--accent);
-background: var(--accent-glow);
-border: 1px solid var(--border-accent);
-padding: 6px 16px;
-border-radius: 100px;
-margin-bottom: 16px;
-}
-.page-title {
-font-family: ‘Syne’, sans-serif;
-font-size: 42px;
-font-weight: 800;
-letter-spacing: -1.5px;
-color: var(--text-primary);
-margin-bottom: 8px;
-}
-.page-title span { color: var(–accent); }
-.page-sub {
-font-size: 15px;
-color: var(--text-secondary);
-}
-
-/* ── SECTION LABEL ── */
-.section-label {
-font-size: 11px;
-font-weight: 600;
-letter-spacing: 2px;
-text-transform: uppercase;
-color: var(--text-secondary);
-margin-bottom: 20px;
+.header-inner {
+max-width: var(–max-w);
+margin: 0 auto;
+padding: 0 24px;
+height: 64px;
 display: flex;
 align-items: center;
-gap: 12px;
+gap: 16px;
 }
-.section-label::after {
-content: ‘’;
+.logo {
+display: flex; align-items: center; gap: 8px;
+font-family: ‘Geologica’, sans-serif;
+font-size: 22px; font-weight: 800;
+color: var(–text-1);
+flex-shrink: 0;
+}
+.logo-icon {
+width: 32px; height: 32px;
+background: var(–accent);
+border-radius: 8px;
+display: flex; align-items: center; justify-content: center;
+color: #fff; font-size: 16px;
+}
+
+.header-search {
 flex: 1;
-height: 1px;
-background: var(--border);
-}
-
-/* ── CARDS GRID ── */
-.grid {
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-gap: 20px;
-max-width: 1100px;
-margin: 0 auto 64px;
-}
-.grid-2 {
-grid-template-columns: repeat(2, 1fr);
-max-width: 740px;
-}
-
-/* ── LISTING CARD ── */
-.card {
-background: var(--bg-card);
-border: 1px solid var(--border);
-border-radius: 20px;
-overflow: hidden;
-cursor: pointer;
-transition: transform 0.35s cubic-bezier(0.16,1,0.3,1),
-border-color 0.3s,
-box-shadow 0.35s;
-position: relative;
-animation: fadeUp 0.5s ease both;
-}
-.card:nth-child(1){animation-delay:0s}
-.card:nth-child(2){animation-delay:0.08s}
-.card:nth-child(3){animation-delay:0.16s}
-.card:nth-child(4){animation-delay:0.24s}
-.card:nth-child(5){animation-delay:0.32s}
-
-@keyframes fadeUp {
-from { opacity:0; transform:translateY(20px); }
-to { opacity:1; transform:translateY(0); }
-}
-
-.card:hover {
-transform: translateY(-8px);
-border-color: var(--border-accent);
-box-shadow: 0 24px 48px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,212,255,0.1);
-}
-
-/* CARD IMAGE */
-.card-img {
-position: relative;
-height: 196px;
 display: flex;
 align-items: center;
-justify-content: center;
-font-size: 72px;
-overflow: hidden;
+background: var(–bg-gray);
+border: 1.5px solid var(–border);
+border-radius: var(–radius-md);
+padding: 0 14px;
+height: 42px;
+gap: 8px;
+transition: border-color 0.2s;
 }
-.card-img-bg {
-position: absolute;
-inset: 0;
-background: linear-gradient(135deg, #141C2E 0%, #1A2540 100%);
+.header-search:focus-within { border-color: var(–accent); }
+.header-search svg { color: var(–text-3); flex-shrink: 0; }
+.header-search input {
+flex: 1; border: none; background: transparent;
+font-family: ‘Outfit’, sans-serif;
+font-size: 14px; font-weight: 500;
+color: var(–text-1); outline: none;
 }
-.card-img-glow {
-position: absolute;
-width: 160px; height: 160px;
+.header-search input::placeholder { color: var(–text-2); font-weight: 500; }
+
+.header-nav {
+display: flex; align-items: center; gap: 8px;
+flex-shrink: 0;
+}
+.nav-link {
+font-family: ‘Outfit’, sans-serif;
+font-size: 14px; font-weight: 500;
+color: var(–text-2);
+padding: 6px 12px;
+border-radius: var(–radius-sm);
+transition: color 0.2s, background 0.2s;
+}
+.nav-link:hover { color: var(–text-1); background: var(–bg-gray); }
+
+.btn-header {
+font-family: ‘Montserrat’, sans-serif;
+font-size: 13px; font-weight: 600;
+color: #fff;
+background: var(–accent);
+padding: 9px 20px;
+border-radius: var(–radius-md);
+white-space: nowrap;
+transition: background 0.2s, box-shadow 0.2s;
+}
+.btn-header:hover { background: var(–accent-dark); box-shadow: var(–shadow-accent); }
+
+.header-icons { display: flex; align-items: center; gap: 4px; }
+.icon-btn {
+width: 38px; height: 38px;
+border-radius: var(–radius-sm);
+display: flex; align-items: center; justify-content: center;
+color: var(–text-2); font-size: 18px;
+transition: background 0.2s, color 0.2s;
+position: relative;
+}
+.icon-btn:hover { background: var(–bg-gray); color: var(–text-1); }
+.notif-dot {
+position: absolute; top: 6px; right: 6px;
+width: 7px; height: 7px;
+background: var(–danger);
 border-radius: 50%;
-background: radial-gradient(circle, rgba(0,212,255,0.08), transparent 70%);
-top: 50%; left: 50%;
-transform: translate(-50%,-50%);
-}
-.card-emoji {
-position: relative;
-z-index: 1;
-filter: drop-shadow(0 8px 24px rgba(0,0,0,0.5));
-transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
-}
-.card:hover .card-emoji { transform: scale(1.1) translateY(-4px); }
-
-/* BADGES */
-.badge-top {
-position: absolute;
-top: 14px; left: 14px;
-z-index: 2;
-display: flex;
-align-items: center;
-gap: 5px;
-background: var(--accent);
-color: #000;
-font-family: ‘Syne’, sans-serif;
-font-size: 10px;
-font-weight: 700;
-letter-spacing: 0.5px;
-padding: 4px 10px;
-border-radius: 8px;
+border: 2px solid #fff;
 }
 
-.badge-new {
-background: var(--success);
-color: #000;
+/* ════════════════════════════
+HERO
+════════════════════════════ */
+.hero {
+background: var(–bg);
+padding: 32px 0 0;
+}
+.hero-inner {
+max-width: var(–max-w);
+margin: 0 auto;
+padding: 0 24px;
+display: grid;
+grid-template-columns: 1fr 280px;
+gap: 32px;
+align-items: start;
+}
+.hero-left {}
+.hero-title {
+font-family: ‘Geologica’, sans-serif;
+font-size: 30px; font-weight: 800;
+color: var(–text-1);
+line-height: 1.2;
+margin-bottom: 6px;
+}
+.hero-sub {
+font-size: 14px; font-weight: 400;
+color: var(–text-2);
+margin-bottom: 20px;
 }
 
-.badge-premium {
-background: linear-gradient(135deg, #FFB800, #FF6B00);
-color: #000;
+/* FILTER BOX */
+.filter-box {
+background: var(–accent-filter);
+border-radius: var(–radius-xl);
+padding: 20px;
 }
+.filter-row { display: flex; gap: 10px; margin-bottom: 10px; align-items: center; flex-wrap: wrap; }
+.filter-row:last-child { margin-bottom: 0; }
 
-.badge-city {
-position: absolute;
-top: 14px; right: 56px;
-z-index: 2;
-background: rgba(10,10,20,0.75);
-backdrop-filter: blur(8px);
-border: 1px solid var(--border);
-color: var(--text-secondary);
-font-size: 11px;
-font-weight: 500;
-padding: 4px 10px;
-border-radius: 8px;
+/* Toggle buttons */
+.toggle-group { display: flex; background: rgba(255,255,255,0.15); border-radius: var(–radius-sm); padding: 3px; gap: 2px; }
+.toggle-btn {
+font-family: ‘Montserrat’, sans-serif;
+font-size: 12px; font-weight: 600;
+color: rgba(255,255,255,0.7);
+padding: 6px 14px;
+border-radius: 6px;
+transition: all 0.2s;
+white-space: nowrap;
 }
+.toggle-btn.active { background: #fff; color: var(–accent); }
+.toggle-btn:hover:not(.active) { color: #fff; background: rgba(255,255,255,0.1); }
 
-/* HEART BTN */
-.heart-btn {
-position: absolute;
-top: 12px; right: 14px;
-z-index: 2;
-width: 34px; height: 34px;
-background: rgba(10,10,20,0.75);
-backdrop-filter: blur(8px);
-border: 1px solid var(--border);
-border-radius: 10px;
-display: flex;
-align-items: center;
-justify-content: center;
+/* Filter select/input */
+.f-select, .f-input {
+background: #fff;
+border: 1.5px solid transparent;
+border-radius: var(–radius-md);
+padding: 0 14px;
+height: 42px;
+font-family: ‘Outfit’, sans-serif;
+font-size: 14px; font-weight: 500;
+color: var(–text-1);
+outline: none;
 cursor: pointer;
-transition: all 0.3s;
-font-size: 16px;
-color: var(--text-disabled);
+transition: border-color 0.2s;
+appearance: none;
+-webkit-appearance: none;
 }
-.heart-btn:hover {
-border-color: var(--danger);
-background: var(--danger-bg);
-color: var(--danger);
-transform: scale(1.1);
+.f-select:focus, .f-input:focus { border-color: var(–accent); }
+.f-select { background-image: url(“data:image/svg+xml,%3Csvg width=‘12’ height=‘8’ viewBox=‘0 0 12 8’ fill=‘none’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cpath d=‘M1 1L6 7L11 1’ stroke=’%236B6B80’ stroke-width=‘1.5’ stroke-linecap=‘round’ stroke-linejoin=‘round’/%3E%3C/svg%3E”); background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; }
+
+.f-wrap { position: relative; flex: 1; min-width: 140px; }
+.f-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(–text-3); pointer-events: none; font-size: 15px; }
+.f-wrap .f-select, .f-wrap .f-input { width: 100%; padding-left: 34px; }
+
+.f-date-wrap { position: relative; flex: 1; min-width: 140px; }
+.f-date-icon { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: var(–text-3); pointer-events: none; }
+.f-date-wrap .f-input { width: 100%; padding-right: 36px; }
+.f-input[type=“date”]::-webkit-calendar-picker-indicator { opacity: 0; position: absolute; right: 0; width: 40px; cursor: pointer; }
+
+/* Filter chips */
+.filter-chips { display: flex; gap: 8px; flex: 1; flex-wrap: wrap; }
+.chip {
+display: flex; align-items: center; gap: 6px;
+background: rgba(255,255,255,0.15);
+border: 1.5px solid rgba(255,255,255,0.3);
+color: #fff;
+font-family: ‘Outfit’, sans-serif;
+font-size: 13px; font-weight: 500;
+padding: 7px 14px;
+border-radius: 100px;
+cursor: pointer;
+transition: all 0.2s;
+white-space: nowrap;
+user-select: none;
 }
-.heart-btn.active {
-border-color: var(--danger);
-background: var(--danger-bg);
-color: var(--danger);
-animation: heartpop 0.4s cubic-bezier(0.16,1,0.3,1);
+.chip:hover { background: rgba(255,255,255,0.25); }
+.chip.active { background: #fff; color: var(–accent); border-color: #fff; }
+.chip-check { font-size: 12px; }
+
+/* Search button */
+.btn-search {
+font-family: ‘Montserrat’, sans-serif;
+font-size: 14px; font-weight: 700;
+color: #fff;
+background: rgba(255,255,255,0.2);
+border: 1.5px solid rgba(255,255,255,0.4);
+padding: 0 28px;
+height: 42px;
+border-radius: var(–radius-md);
+display: flex; align-items: center; gap: 8px;
+transition: background 0.2s, border-color 0.2s;
+white-space: nowrap;
 }
-@keyframes heartpop {
-0% { transform: scale(1); }
-40% { transform: scale(1.4); }
-70% { transform: scale(0.9); }
-100% { transform: scale(1); }
+.btn-search:hover { background: rgba(255,255,255,0.3); border-color: rgba(255,255,255,0.6); }
+.btn-search svg { width: 16px; height: 16px; }
+
+/* HERO RIGHT — top cards */
+.hero-right { display: flex; flex-direction: column; gap: 10px; padding-top: 8px; }
+.mini-card {
+background: #fff;
+border: 1px solid var(–border);
+border-radius: var(–radius-lg);
+padding: 12px 14px;
+display: flex; gap: 12px; align-items: center;
+box-shadow: var(–shadow-sm);
+transition: box-shadow 0.2s;
+}
+.mini-card:hover { box-shadow: var(–shadow-md); }
+.mini-thumb {
+width: 56px; height: 56px;
+border-radius: var(–radius-sm);
+object-fit: cover;
+background: var(–bg-gray);
+flex-shrink: 0;
+display: flex; align-items: center; justify-content: center;
+font-size: 28px;
+}
+.mini-info { flex: 1; min-width: 0; }
+.mini-badge {
+display: inline-block;
+font-size: 10px; font-weight: 700;
+font-family: ‘Montserrat’, sans-serif;
+padding: 2px 7px; border-radius: 4px;
+margin-bottom: 3px;
+text-transform: uppercase; letter-spacing: 0.3px;
+}
+.badge-top { background: #FFF3CD; color: #B45309; }
+.badge-new { background: var(–success-bg); color: var(–success); }
+.badge-hot { background: #FEE2E2; color: #DC2626; }
+.mini-name { font-family: ‘Geologica’, sans-serif; font-size: 13px; font-weight: 700; color: var(–text-1); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mini-price { font-family: ‘Geologica’, sans-serif; font-size: 13px; font-weight: 700; color: var(–accent); }
+.mini-price span { font-size: 11px; font-weight: 400; color: var(–text-3); font-family: ‘Outfit’, sans-serif; }
+
+/* ════════════════════════════
+CATEGORIES
+════════════════════════════ */
+.categories { padding: 36px 0 28px; }
+.section-title {
+font-family: ‘Geologica’, sans-serif;
+font-size: 22px; font-weight: 800;
+color: var(–text-1);
+margin-bottom: 4px;
+}
+.section-sub { font-size: 14px; color: var(–text-2); margin-bottom: 20px; }
+
+.cats-scroll { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 8px; scrollbar-width: none; }
+.cats-scroll::-webkit-scrollbar { display: none; }
+.cat-chip {
+display: flex; flex-direction: column; align-items: center;
+gap: 8px; padding: 14px 16px;
+background: var(–bg-card);
+border: 1.5px solid var(–border);
+border-radius: var(–radius-lg);
+cursor: pointer;
+transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+flex-shrink: 0; min-width: 88px;
+text-align: center;
+}
+.cat-chip:hover { border-color: var(–accent); background: var(–accent-light); box-shadow: var(–shadow-sm); }
+.cat-chip.active { border-color: var(–accent); background: var(–accent-light); }
+.cat-icon { font-size: 26px; line-height: 1; }
+.cat-name { font-size: 11px; font-weight: 600; color: var(–text-1); font-family: ‘Outfit’, sans-serif; white-space: nowrap; }
+
+/* ════════════════════════════
+SECTION HEADER
+════════════════════════════ */
+.sec-header {
+display: flex; align-items: center; justify-content: space-between;
+margin-bottom: 20px;
+}
+.sec-eyebrow {
+font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+text-transform: uppercase; color: var(–accent);
+font-family: ‘Montserrat’, sans-serif;
+margin-bottom: 4px;
+}
+.see-all {
+font-family: ‘Montserrat’, sans-serif;
+font-size: 13px; font-weight: 600;
+color: var(–accent);
+transition: color 0.2s;
+white-space: nowrap;
+}
+.see-all:hover { color: var(–accent-dark); }
+
+/* ════════════════════════════
+LISTING CARDS GRID
+════════════════════════════ */
+.listings-section { padding: 8px 0 40px; }
+.cards-grid {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 18px;
 }
 
-/* CARD BODY */
-.card-body { padding: 18px 18px 0; }
+/* CARD */
+.card {
+background: var(–bg-card);
+border: 1.5px solid var(–border);
+border-radius: var(–radius-xl);
+overflow: hidden;
+transition: box-shadow 0.25s, border-color 0.25s;
+}
+.card:hover { box-shadow: var(–shadow-lg); border-color: #D8D8F0; }
 
+.card-img-wrap {
+position: relative;
+height: 180px;
+background: var(–bg-gray);
+overflow: hidden;
+}
+.card-img-wrap img {
+width: 100%; height: 100%;
+object-fit: cover;
+}
+.card-img-placeholder {
+width: 100%; height: 100%;
+display: flex; align-items: center; justify-content: center;
+font-size: 64px;
+background: linear-gradient(135deg, #F0F0FA, #E8E8F5);
+}
+.card-city {
+position: absolute; top: 10px; left: 10px;
+background: rgba(255,255,255,0.92);
+backdrop-filter: blur(6px);
+font-size: 11px; font-weight: 600; color: var(–text-2);
+padding: 3px 9px; border-radius: 6px;
+display: flex; align-items: center; gap: 3px;
+}
+.card-status-badge {
+position: absolute; top: 10px; right: 10px;
+font-family: ‘Montserrat’, sans-serif;
+font-size: 10px; font-weight: 700;
+padding: 3px 9px; border-radius: 6px;
+text-transform: uppercase; letter-spacing: 0.3px;
+}
+.card-heart {
+position: absolute; bottom: 10px; right: 10px;
+width: 32px; height: 32px;
+background: rgba(255,255,255,0.92);
+backdrop-filter: blur(6px);
+border-radius: 8px;
+display: flex; align-items: center; justify-content: center;
+font-size: 16px; color: var(–text-3);
+cursor: pointer;
+transition: color 0.2s, background 0.2s;
+border: none;
+}
+.card-heart:hover { color: var(–danger); background: #fff; }
+.card-heart.fav { color: var(–danger); }
+
+.card-body { padding: 14px 14px 0; }
 .card-cat {
-font-size: 10px;
-font-weight: 600;
-letter-spacing: 1.5px;
-text-transform: uppercase;
-color: var(--accent);
-margin-bottom: 6px;
+font-family: ‘Montserrat’, sans-serif;
+font-size: 10px; font-weight: 700;
+color: var(–accent); letter-spacing: 0.8px;
+text-transform: uppercase; margin-bottom: 5px;
 }
-
 .card-title {
-font-family: ‘Syne’, sans-serif;
-font-size: 16px;
-font-weight: 700;
-color: var(--text-primary);
-line-height: 1.3;
-margin-bottom: 6px;
+font-family: ‘Geologica’, sans-serif;
+font-size: 15px; font-weight: 700;
+color: var(–text-1); line-height: 1.3;
+margin-bottom: 5px;
 }
-
 .card-desc {
-font-size: 13px;
-color: var(--text-secondary);
-line-height: 1.65;
-margin-bottom: 14px;
-display: --webkit-box;
+font-size: 12px; color: var(–text-2);
+line-height: 1.6; margin-bottom: 10px;
+display: -webkit-box;
 -webkit-line-clamp: 2;
 -webkit-box-orient: vertical;
 overflow: hidden;
 }
-
-/* TAGS */
-.card-tags {
-display: flex;
-flex-wrap: wrap;
-gap: 6px;
-margin-bottom: 14px;
-}
-.tag {
-font-size: 11px;
-font-weight: 500;
-color: var(--text-secondary);
-background: rgba(255,255,255,0.04);
-border: 1px solid var(--border);
-padding: 3px 10px;
-border-radius: 6px;
+.card-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; }
+.ctag {
+font-size: 11px; font-weight: 500; color: var(–text-2);
+background: var(–bg-gray);
+border: 1px solid var(–border);
+padding: 3px 9px; border-radius: 100px;
 }
 
-/* CARD FOOTER */
+.card-owner {
+display: flex; align-items: center; gap: 8px;
+padding: 10px 14px;
+border-top: 1px solid var(–border);
+border-bottom: 1px solid var(–border);
+}
+.owner-ava {
+width: 28px; height: 28px;
+border-radius: 8px;
+background: var(–accent-light);
+display: flex; align-items: center; justify-content: center;
+font-size: 14px; flex-shrink: 0;
+overflow: hidden;
+}
+.owner-ava img { width: 100%; height: 100%; object-fit: cover; }
+.owner-name-sm { font-size: 12px; font-weight: 600; color: var(–text-1); }
+.owner-online {
+display: flex; align-items: center; gap: 4px;
+font-size: 11px; color: var(–success);
+}
+.online-dot {
+width: 6px; height: 6px; border-radius: 50%;
+background: var(–success);
+}
+.owner-verified {
+margin-left: auto;
+color: var(–accent); font-size: 16px;
+}
+
 .card-footer {
-display: flex;
-align-items: flex-end;
-justify-content: space-between;
-padding: 14px 18px 18px;
-border-top: 1px solid var(--border);
-margin-top: 4px;
+display: flex; align-items: center; justify-content: space-between;
+padding: 10px 14px;
 }
+.card-rating { display: flex; align-items: center; gap: 5px; }
+.stars-row { display: flex; gap: 1px; }
+.star-i { font-size: 12px; color: var(–star); }
+.star-e { font-size: 12px; color: var(–border); }
+.rating-val { font-family: ‘Geologica’, sans-serif; font-size: 13px; font-weight: 700; color: var(–text-1); }
+.rating-cnt { font-size: 11px; color: var(–text-3); }
+.card-price { text-align: right; }
+.price-val {
+font-family: ‘Geologica’, sans-serif;
+font-size: 16px; font-weight: 800;
+color: var(–accent);
+}
+.price-unit { font-size: 11px; color: var(–text-3); }
 
-.price-block {}
-.price-label {
-font-size: 10px;
-color: var(--text-disabled);
-font-weight: 500;
-text-transform: uppercase;
-letter-spacing: 0.5px;
-margin-bottom: 2px;
+.card-actions {
+display: flex; gap: 8px;
+padding: 10px 14px 14px;
 }
-.price-amount {
-font-family: ‘Syne’, sans-serif;
-font-size: 22px;
-font-weight: 800;
-color: var(--accent);
-line-height: 1;
-}
-.price-amount.premium {
-background: linear-gradient(135deg, var(--accent), #0099CC);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-}
-.price-unit {
-font-size: 11px;
-color: var(--text-secondary);
-margin-top: 2px;
-font-weight: 500;
-}
-
-/* RATING */
-.rating-block {
-text-align: right;
-}
-.stars {
-display: flex;
-gap: 2px;
-justify-content: flex-end;
-margin-bottom: 3px;
-}
-.star {
-font-size: 13px;
-color: var(--text-disabled);
-transition: color 0.2s;
-}
-.star.active { color: var(--warning); }
-.star.half {
-position: relative;
-color: var(--text-disabled);
-}
-.rating-row {
-display: flex;
-align-items: center;
-gap: 6px;
-justify-content: flex-end;
-}
-.rating-score {
-font-family: ‘Syne’, sans-serif;
-font-size: 14px;
-font-weight: 700;
-color: var(--text-primary);
-}
-.rating-count {
-font-size: 11px;
-color: var(--text-disabled);
-}
-
-/* ACTION BTN */
-.card-action {
-display: flex;
-gap: 8px;
-padding: 0 18px 18px;
-}
-.btn-book {
+.btn-request {
 flex: 1;
-padding: 11px;
-background: var(--accent-glow);
-border: 1px solid var(--border-accent);
-color: var(--accent);
-font-family: ‘DM Sans’, sans-serif;
-font-size: 13px;
-font-weight: 600;
-border-radius: 12px;
-cursor: pointer;
-transition: all 0.25s;
+font-family: ‘Montserrat’, sans-serif;
+font-size: 13px; font-weight: 600;
+color: #fff; background: var(–accent);
+height: 38px; border-radius: var(–radius-md);
+transition: background 0.2s, box-shadow 0.2s;
 }
-.btn-book:hover {
-background: var(--accent);
-color: #000;
-border-color: var(--accent);
-}
-.btn-contact {
-padding: 11px 14px;
-background: rgba(255,255,255,0.04);
-border: 1px solid var(--border);
-color: var(--text-secondary);
-font-size: 16px;
-border-radius: 12px;
-cursor: pointer;
-transition: all 0.25s;
-}
-.btn-contact:hover {
-background: rgba(255,255,255,0.08);
-color: var(--text-primary);
-border-color: rgba(255,255,255,0.15);
-}
-
-/* ── OWNER BADGE ── */
-.owner-row {
-display: flex;
-align-items: center;
-gap: 10px;
-padding: 12px 18px;
-border-top: 1px solid var(--border);
-}
-.owner-avatar {
-width: 32px; height: 32px;
-background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-border-radius: 10px;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 14px;
-flex-shrink: 0;
-}
-.owner-info { flex: 1; }
-.owner-name { font-size: 12px; font-weight: 600; color: var(--text-primary); }
-.owner-status {
-display: flex;
-align-items: center;
-gap: 5px;
-font-size: 11px;
-color: var(--text-disabled);
-}
-.status-dot {
-width: 6px; height: 6px;
-border-radius: 50%;
-background: var(--success);
-box-shadow: 0 0 6px var(--success);
-animation: blink 2s infinite;
-}
-@keyframes blink {
-0%,100%{opacity:1} 50%{opacity:0.4}
-}
-.status-dot.offline { background: var(--text-disabled); box-shadow: none; animation: none; }
-.verified-badge {
-display: flex;
-align-items: center;
-gap: 4px;
-font-size: 10px;
-font-weight: 600;
-color: var(--success);
-background: var(--success-bg);
-border: 1px solid rgba(0,255,148,0.2);
-padding: 3px 8px;
-border-radius: 6px;
-}
-
-/* ── INBOX / NOTIFICATIONS DEMO ── */
-.inbox-demo {
-max-width: 420px;
-margin: 0 auto 64px;
-background: var(--bg-card);
-border: 1px solid var(--border);
-border-radius: 20px;
-overflow: hidden;
-}
-.inbox-header {
-padding: 20px 20px 16px;
-border-bottom: 1px solid var(--border);
-display: flex;
-align-items: center;
-justify-content: space-between;
-}
-.inbox-title {
-font-family: ‘Syne’, sans-serif;
-font-size: 16px;
-font-weight: 700;
-}
-.inbox-badge {
-background: var(--accent);
-color: #000;
-font-family: ‘Syne’, sans-serif;
-font-size: 11px;
-font-weight: 700;
-padding: 3px 9px;
-border-radius: 100px;
-}
-
-.msg-item {
-display: flex;
-gap: 14px;
-padding: 16px 20px;
-border-bottom: 1px solid var(--border);
-cursor: pointer;
+.btn-request:hover { background: var(–accent-dark); box-shadow: var(–shadow-accent); }
+.btn-msg {
+width: 38px; height: 38px;
+background: var(–accent-light);
+border-radius: var(–radius-md);
+display: flex; align-items: center; justify-content: center;
+font-size: 17px; color: var(–accent);
 transition: background 0.2s;
+flex-shrink: 0;
+}
+.btn-msg:hover { background: #DDDCFF; }
+
+/* ════════════════════════════
+HOW IT WORKS
+════════════════════════════ */
+.how-section {
+background: var(–bg-gray);
+padding: 56px 0;
+}
+.how-eyebrow {
+font-family: ‘Montserrat’, sans-serif;
+font-size: 11px; font-weight: 700;
+letter-spacing: 1.5px; text-transform: uppercase;
+color: var(–accent); margin-bottom: 6px;
+}
+.how-title {
+font-family: ‘Geologica’, sans-serif;
+font-size: 26px; font-weight: 800;
+color: var(–text-1); margin-bottom: 36px;
+}
+.how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.how-card {
+background: #fff;
+border: 1.5px solid var(–border);
+border-radius: var(–radius-xl);
+padding: 28px 24px;
+}
+.how-icon-wrap {
+width: 52px; height: 52px;
+border-radius: var(–radius-md);
+display: flex; align-items: center; justify-content: center;
+font-size: 24px; margin-bottom: 16px;
+}
+.how-icon-1 { background: var(–accent-light); }
+.how-icon-2 { background: var(–success-bg); }
+.how-icon-3 { background: #FFF8E1; }
+.how-step-num {
+font-family: ‘Geologica’, sans-serif;
+font-size: 12px; font-weight: 700;
+color: var(–accent); margin-bottom: 6px;
+letter-spacing: 0.5px;
+}
+.how-card-title {
+font-family: ‘Geologica’, sans-serif;
+font-size: 17px; font-weight: 700;
+color: var(–text-1); margin-bottom: 8px;
+}
+.how-card-desc { font-size: 14px; color: var(–text-2); line-height: 1.7; }
+
+/* ════════════════════════════
+AD BLOCK
+════════════════════════════ */
+.ad-block {
+padding: 24px 0;
+}
+.ad-unit {
+background: var(–bg-gray);
+border: 1px dashed var(–border);
+border-radius: var(–radius-md);
+height: 90px;
+display: flex; align-items: center; justify-content: center;
 position: relative;
 }
-.msg-item:last-child { border-bottom: none; }
-.msg-item:hover { background: var(--bg-hover); }
-.msg-item.unread { background: rgba(0,212,255,0.03); }
-.msg-item.unread::before {
-content: ‘’;
-position: absolute;
-left: 0; top: 50%;
-transform: translateY(-50%);
-width: 3px; height: 40%;
-background: var(--accent);
-border-radius: 0 4px 4px 0;
+.ad-label {
+position: absolute; top: 6px; left: 10px;
+font-size: 10px; color: var(–text-3);
+font-family: ‘Outfit’, sans-serif;
+letter-spacing: 0.5px;
 }
+.ad-placeholder { font-size: 13px; color: var(–text-3); }
 
-.msg-avatar {
-width: 44px; height: 44px;
-border-radius: 14px;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 20px;
-flex-shrink: 0;
-position: relative;
-}
-.msg-avatar-bg-1 { background: linear-gradient(135deg, #1C3A5E, #0D2137); }
-.msg-avatar-bg-2 { background: linear-gradient(135deg, #1C3830, #0D2820); }
-.msg-avatar-bg-3 { background: linear-gradient(135deg, #3A1C2E, #250D1C); }
-.msg-avatar-bg-4 { background: linear-gradient(135deg, #2E3A1C, #1C250D); }
-
-.msg-online {
-position: absolute;
-bottom: 2px; right: 2px;
-width: 10px; height: 10px;
-background: var(--success);
-border: 2px solid var(--bg-card);
-border-radius: 50%;
-box-shadow: 0 0 6px var(--success);
-}
-
-.msg-content { flex: 1; min-width: 0; }
-.msg-row1 {
-display: flex;
-align-items: center;
-justify-content: space-between;
-margin-bottom: 3px;
-}
-.msg-name { font-size: 13px; font-weight: 600; color: var(--text-primary); }
-.msg-time { font-size: 11px; color: var(--text-disabled); }
-.msg-tech { font-size: 11px; color: var(--accent); margin-bottom: 3px; font-weight: 500; }
-.msg-preview {
-font-size: 12px;
-color: var(--text-secondary);
-white-space: nowrap;
-overflow: hidden;
-text-overflow: ellipsis;
-}
-.msg-preview.unread-text { color: var(--text-primary); font-weight: 500; }
-.msg-count {
-background: var(--accent);
-color: #000;
-font-size: 10px;
-font-weight: 700;
-min-width: 18px;
-height: 18px;
-border-radius: 100px;
-display: flex;
-align-items: center;
-justify-content: center;
-padding: 0 5px;
-flex-shrink: 0;
-margin-top: 4px;
-}
-
-/* ── COLOR PALETTE REFERENCE ── */
-.palette-section {
-max-width: 1100px;
-margin: 0 auto 64px;
-}
-.palette-grid {
+/* ════════════════════════════
+OWNER CTA
+════════════════════════════ */
+.owner-cta { padding: 40px 0 56px; }
+.owner-banner {
+background: var(–accent);
+border-radius: var(–radius-xl);
+padding: 48px 56px;
 display: grid;
-grid-template-columns: repeat(8, 1fr);
-gap: 12px;
-}
-.swatch {
-border-radius: 14px;
+grid-template-columns: 1fr auto;
+gap: 48px;
+align-items: center;
+position: relative;
 overflow: hidden;
-border: 1px solid var(--border);
 }
-.swatch-color {
-height: 64px;
+.owner-banner::before {
+content: ‘’;
+position: absolute; right: -80px; top: -80px;
+width: 280px; height: 280px;
+background: rgba(255,255,255,0.06);
+border-radius: 50%;
 }
-.swatch-info {
-background: var(--bg-card);
-padding: 10px 12px;
+.owner-banner::after {
+content: ‘’;
+position: absolute; right: 100px; bottom: -60px;
+width: 180px; height: 180px;
+background: rgba(255,255,255,0.04);
+border-radius: 50%;
 }
-.swatch-name { font-size: 11px; font-weight: 600; color: var(--text-primary); margin-bottom: 2px; }
-.swatch-hex { font-size: 10px; color: var(--text-secondary); font-family: monospace; }
+.owner-eyebrow {
+font-family: ‘Montserrat’, sans-serif;
+font-size: 11px; font-weight: 700;
+letter-spacing: 1.5px; text-transform: uppercase;
+color: rgba(255,255,255,0.6); margin-bottom: 10px;
+}
+.owner-title {
+font-family: ‘Geologica’, sans-serif;
+font-size: 30px; font-weight: 800;
+color: #fff; line-height: 1.2;
+margin-bottom: 12px;
+}
+.owner-desc { font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.7; max-width: 480px; }
+.owner-right { display: flex; flex-direction: column; gap: 12px; align-items: flex-end; position: relative; z-index: 1; }
+.btn-owner-main {
+font-family: ‘Montserrat’, sans-serif;
+font-size: 14px; font-weight: 700;
+color: var(–accent);
+background: #fff;
+padding: 14px 32px;
+border-radius: var(–radius-md);
+white-space: nowrap;
+transition: background 0.2s, box-shadow 0.2s;
+display: block;
+}
+.btn-owner-main:hover { background: #F5F5FF; box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+.owner-note { font-size: 12px; color: rgba(255,255,255,0.55); text-align: right; }
 
-/* ── UI ELEMENTS DEMO ── */
-.ui-row {
-max-width: 1100px;
-margin: 0 auto 64px;
-display: flex;
-flex-wrap: wrap;
-gap: 16px;
-align-items: center;
+/* ════════════════════════════
+FOOTER
+════════════════════════════ */
+footer {
+background: var(–text-1);
+color: #fff;
+padding: 56px 0 32px;
+}
+.footer-grid {
+display: grid;
+grid-template-columns: 260px 1fr 1fr 1fr;
+gap: 48px;
+margin-bottom: 48px;
+}
+.footer-logo {
+font-family: ‘Geologica’, sans-serif;
+font-size: 22px; font-weight: 800;
+margin-bottom: 10px;
+}
+.footer-logo span { color: var(–accent); }
+.footer-desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.7; margin-bottom: 20px; }
+.footer-socials { display: flex; gap: 8px; }
+.soc-btn {
+width: 36px; height: 36px;
+border-radius: var(–radius-sm);
+border: 1px solid rgba(255,255,255,0.1);
+display: flex; align-items: center; justify-content: center;
+font-size: 16px; color: rgba(255,255,255,0.5);
+transition: border-color 0.2s, color 0.2s;
+}
+.soc-btn:hover { border-color: var(–accent); color: var(–accent); }
+.footer-col h4 {
+font-family: ‘Montserrat’, sans-serif;
+font-size: 11px; font-weight: 700;
+letter-spacing: 1.5px; text-transform: uppercase;
+color: rgba(255,255,255,0.4); margin-bottom: 16px;
+}
+.footer-col ul { display: flex; flex-direction: column; gap: 9px; }
+.footer-col ul li a { font-size: 13px; color: rgba(255,255,255,0.6); transition: color 0.2s; }
+.footer-col ul li a:hover { color: #fff; }
+.footer-bottom {
+display: flex; align-items: center; justify-content: space-between;
+padding-top: 24px;
+border-top: 1px solid rgba(255,255,255,0.08);
+}
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { font-size: 12px; color: rgba(255,255,255,0.3); transition: color 0.2s; }
+.footer-links a:hover { color: rgba(255,255,255,0.6); }
+
+/* ════════════════════════════
+SECTION DIVIDER
+════════════════════════════ */
+.sec-divider { height: 1px; background: var(–border); margin: 4px 0; }
+
+/* ════════════════════════════
+RESPONSIVE
+════════════════════════════ */
+@media (max-width: 1100px) {
+.cards-grid { grid-template-columns: repeat(3, 1fr); }
+.footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
 }
 
-/* Buttons */
-.ui-btn-primary {
-padding: 12px 24px;
-background: var(--accent);
-color: #000;
-font-family: ‘DM Sans’, sans-serif;
-font-size: 14px;
-font-weight: 600;
-border: none;
-border-radius: 12px;
-cursor: pointer;
-transition: all 0.25s;
+@media (max-width: 900px) {
+.hero-inner { grid-template-columns: 1fr; }
+.hero-right { flex-direction: row; overflow-x: auto; padding-bottom: 8px; }
+.mini-card { min-width: 220px; }
+.how-grid { grid-template-columns: 1fr; gap: 16px; }
+.owner-banner { grid-template-columns: 1fr; gap: 24px; }
+.owner-right { align-items: flex-start; }
+.header-nav { display: none; }
 }
-.ui-btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); }
 
-.ui-btn-ghost {
-padding: 12px 24px;
-background: transparent;
-color: var(--accent);
-font-family: ‘DM Sans’, sans-serif;
-font-size: 14px;
-font-weight: 600;
-border: 1px solid var(--border-accent);
-border-radius: 12px;
-cursor: pointer;
-transition: all 0.25s;
+@media (max-width: 768px) {
+.cards-grid { grid-template-columns: repeat(2, 1fr); }
+.filter-row { flex-wrap: wrap; }
+.f-wrap, .f-date-wrap { min-width: calc(50% - 5px); }
+.hero-title { font-size: 24px; }
+.section-title { font-size: 20px; }
+.owner-title { font-size: 24px; }
+.owner-banner { padding: 32px; }
 }
-.ui-btn-ghost:hover { background: var(--accent-glow); }
 
-.ui-btn-danger {
-padding: 12px 24px;
-background: var(--danger-bg);
-color: var(--danger);
-font-family: ‘DM Sans’, sans-serif;
-font-size: 14px;
-font-weight: 600;
-border: 1px solid rgba(255,45,85,0.25);
-border-radius: 12px;
-cursor: pointer;
-transition: all 0.25s;
-}
-.ui-btn-danger:hover { background: rgba(255,45,85,0.2); }
-
-/* Status badges */
-.status-pill {
-display: inline-flex;
-align-items: center;
-gap: 6px;
-padding: 5px 12px;
-border-radius: 100px;
-font-size: 12px;
-font-weight: 600;
-}
-.status-available { background: var(--success-bg); color: var(--success); border: 1px solid rgba(0,255,148,0.2); }
-.status-busy { background: rgba(255,184,0,0.1); color: var(--warning); border: 1px solid rgba(255,184,0,0.2); }
-.status-unavail { background: var(--danger-bg); color: var(--danger); border: 1px solid rgba(255,45,85,0.2); }
-
-/* divider */
-.divider {
-max-width: 1100px;
-margin: 0 auto 48px;
-height: 1px;
-background: var(--border);
+@media (max-width: 560px) {
+.container { padding: 0 16px; }
+.header-inner { padding: 0 16px; gap: 10px; }
+.hero-inner { padding: 0 16px; }
+.cards-grid { grid-template-columns: 1fr; }
+.toggle-group { flex-wrap: wrap; }
+.filter-chips { flex-wrap: wrap; }
+.chip { font-size: 12px; padding: 6px 12px; }
+.btn-search { width: 100%; justify-content: center; }
+.footer-grid { grid-template-columns: 1fr; gap: 28px; }
+.footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+.cats-scroll { gap: 8px; }
+.cat-chip { min-width: 76px; padding: 12px 10px; }
+.header-search { display: none; }
+.logo span { display: none; }
+.owner-banner { padding: 24px; }
+.owner-title { font-size: 22px; }
 }
 </style>
 
 </head>
 <body>
 
-<!-- PAGE HEADER -->
+<!-- ════ HEADER ════ -->
 
-<div class="page-header">
-<div class="page-eyebrow">Dark Steel · UI Kit</div>
-<div class="page-title">Картки оголошень <span>TechRent</span></div>
-<div class="page-sub">Живе демо палітри — всі ключові елементи інтерфейсу</div>
+<header class="header">
+<div class="header-inner">
+<a href="/" class="logo">
+<div class="logo-icon">🐎</div>
+<span>Pixe</span>
+</a>
+
+```
+<div class="header-search">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+<input type="text" placeholder="Введіть назву спецпослуги або техніки...">
 </div>
 
-<!-- SECTION: CARDS -->
+<nav class="header-nav">
+<a href="#" class="nav-link">Каталог</a>
+<a href="#" class="nav-link">Послуги</a>
+<a href="#" class="nav-link">Партнерам</a>
+</nav>
 
-<div class="section-label" style="max-width:1100px;margin:0 auto 20px;">Картки оголошень</div>
+<div class="header-icons">
+<button class="icon-btn" title="Вхідні">
+💬
+<span class="notif-dot"></span>
+</button>
+<button class="icon-btn" title="Обрані">🤍</button>
+<button class="icon-btn" title="Профіль">👤</button>
+</div>
 
-<div class="grid">
+<a href="#" class="btn-header">Розмістити техніку</a>
+```
 
-<!-- CARD 1: TRACTOR — TOP -->
+</div>
+</header>
 
+<!-- ════ HERO ════ -->
+
+<section class="hero">
+<div class="hero-inner">
+<div class="hero-left">
+<h1 class="hero-title">Оренда спецтехніки поруч</h1>
+<p class="hero-sub">Від легкового до важкої техніки, від авіапослуг</p>
+
+```
+<!-- FILTER BOX -->
+<div class="filter-box">
+<!-- Row 1 -->
+<div class="filter-row">
+<div class="toggle-group">
+<button class="toggle-btn active">✓ Всі</button>
+<button class="toggle-btn">Приватна особа</button>
+<button class="toggle-btn">Бізнес</button>
+</div>
+
+<div class="f-wrap">
+<span class="f-icon">📍</span>
+<select class="f-select">
+<option value="">Регіон</option>
+<option>Київська</option>
+<option>Харківська</option>
+<option>Дніпропетровська</option>
+<option>Одеська</option>
+<option>Львівська</option>
+<option>Запорізька</option>
+<option>Вінницька</option>
+</select>
+</div>
+
+<div class="f-date-wrap">
+<input type="date" class="f-input" placeholder="Дата">
+<span class="f-date-icon">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+</span>
+</div>
+</div>
+
+<!-- Row 2 -->
+<div class="filter-row">
+<div class="f-wrap" style="flex:2;">
+<span class="f-icon">🚛</span>
+<select class="f-select" id="mainCat" onchange="showSubCat()">
+<option value="">Всі типи транспорту</option>
+<option value="agri">🚜 Сільськогосподарська</option>
+<option value="build">🏗️ Будівельна техніка</option>
+<option value="cargo">🚛 Вантажний транспорт</option>
+<option value="water">⛵ Водний транспорт</option>
+<option value="air">✈️ Авіація</option>
+<option value="car">🚗 Легковий транспорт</option>
+<option value="bus">🚌 Автобуси</option>
+<option value="moto">🏍️ Мотоцикли</option>
+<option value="special">🔧 Спецпослуги</option>
+</select>
+</div>
+
+<div class="f-wrap" style="flex:2;">
+<span class="f-icon">📋</span>
+<select class="f-select" id="subCat">
+<option value="">Підкатегорія</option>
+</select>
+</div>
+
+<div class="f-wrap">
+<span class="f-icon">💰</span>
+<select class="f-select">
+<option value="">Вартість</option>
+<option>до 1 000 грн</option>
+<option>1 000 — 5 000 грн</option>
+<option>5 000 — 15 000 грн</option>
+<option>15 000 — 50 000 грн</option>
+<option>понад 50 000 грн</option>
+</select>
+</div>
+</div>
+
+<!-- Row 3 -->
+<div class="filter-row">
+<div class="filter-chips">
+<button class="chip active" onclick="toggleChip(this)">
+<span>З оператором / водієм</span>
+</button>
+<button class="chip" onclick="toggleChip(this)">
+<span class="chip-check">✓</span>
+<span>Тільки верифіковані</span>
+</button>
+<button class="chip" onclick="toggleChip(this)">
+<span>Потрібно сьогодні</span>
+</button>
+</div>
+<button class="btn-search">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+Знайти
+</button>
+</div>
+</div><!-- /filter-box -->
+</div><!-- /hero-left -->
+
+<!-- HERO RIGHT -->
+<div class="hero-right">
+<div class="mini-card">
+<div class="mini-thumb">🚁</div>
+<div class="mini-info">
+<span class="mini-badge badge-top">ТОП</span>
+<div class="mini-name">Гелікоптер Robinson</div>
+<div class="mini-price">від 12 000 <span>грн/год</span></div>
+</div>
+</div>
+<div class="mini-card">
+<div class="mini-thumb">🚜</div>
+<div class="mini-info">
+<span class="mini-badge badge-new">НОВИЙ</span>
+<div class="mini-name">Трактор Good Work</div>
+<div class="mini-price">від 2 700 <span>грн/день</span></div>
+</div>
+</div>
+<div class="mini-card">
+<div class="mini-thumb">✈️</div>
+<div class="mini-info">
+<span class="mini-badge badge-hot">ХІТ</span>
+<div class="mini-name">Cessna Citation XLS</div>
+<div class="mini-price">від 54 500 <span>грн/год</span></div>
+</div>
+</div>
+</div>
+```
+
+</div><!-- /hero-inner -->
+</section>
+
+<!-- ════ CATEGORIES ════ -->
+
+<section class="categories">
+<div class="container">
+<p class="section-sub">Знайди та орендуй будь-яку техніку у своєму місті за хвилини</p>
+<div class="cats-scroll">
+<div class="cat-chip active">
+<div class="cat-icon">🚜</div>
+<div class="cat-name">Будівельна</div>
+</div>
+<div class="cat-chip">
+<div class="cat-icon">🌾</div>
+<div class="cat-name">С/г техніка</div>
+</div>
+<div class="cat-chip">
+<div class="cat-icon">🚛</div>
+<div class="cat-name">Вантажна</div>
+</div>
+<div class="cat-chip">
+<div class="cat-icon">🏗️</div>
+<div class="cat-name">Спецтехніка</div>
+</div>
+<div class="cat-chip">
+<div class="cat-icon">🚌</div>
+<div class="cat-name">Автобуси</div>
+</div>
+<div class="cat-chip">
+<div class="cat-icon">🚗</div>
+<div class="cat-name">Авто/кадіа</div>
+</div>
+<div class="cat-chip">
+<div class="cat-icon">🏍️</div>
+<div class="cat-name">Мотоцикли</div>
+</div>
+<div class="cat-chip">
+<div class="cat-icon">🚢</div>
+<div class="cat-name">Водний тр.</div>
+</div>
+<div class="cat-chip">
+<div class="cat-icon">🚁</div>
+<div class="cat-name">Гелікоптер</div>
+</div>
+<div class="cat-chip">
+<div class="cat-icon">✈️</div>
+<div class="cat-name">Авіація</div>
+</div>
+<div class="cat-chip">
+<div class="cat-icon">🔧</div>
+<div class="cat-name">Послуги</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ════ POPULAR LISTINGS ════ -->
+
+<section class="listings-section">
+<div class="container">
+<div class="sec-header">
+<div>
+<div class="sec-eyebrow">Топ оголошення</div>
+<h2 class="section-title">Популярна техніка у вашому місті</h2>
+</div>
+<a href="#" class="see-all">Переглянути всі →</a>
+</div>
+
+```
+<div class="cards-grid">
+
+<!-- CARD 1 — Helicopter -->
 <div class="card">
-<div class="card-img">
-<div class="card-img-bg"></div>
-<div class="card-img-glow"></div>
-<div class="card-emoji">🚜</div>
-<div class="badge-top">⭐ ТОП</div>
-<div class="badge-city">📍 Київ</div>
-<div class="heart-btn" onclick="toggleHeart(this)">♡</div>
+<div class="card-img-wrap">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Robinson_R44_Raven_II%2C_Private_JP6817763.jpg/640px-Robinson_R44_Raven_II%2C_Private_JP6817763.jpg" alt="Гелікоптер" loading="lazy">
+<div class="card-city">📍 Київ</div>
+<div class="card-status-badge badge-top">ТОП</div>
+<button class="card-heart" onclick="toggleFav(this)">🤍</button>
+</div>
+<div class="card-body">
+<div class="card-cat">Авіація</div>
+<div class="card-title">Гелікоптер Robinson R44</div>
+<div class="card-desc">Оглядовий політ над Києвом з досвідченим пілотом. До 3 пасажирів. Тривалість від 30 хв.</div>
+<div class="card-tags">
+<span class="ctag">З пілотом</span>
+<span class="ctag">3 пасажири</span>
+<span class="ctag">Від 30 хв</span>
+</div>
+</div>
+<div class="card-owner">
+<div class="owner-ava">✈️</div>
+<div>
+<div class="owner-name-sm">SkyTour Ukraine</div>
+<div class="owner-online"><span class="online-dot"></span>Онлайн зараз</div>
+</div>
+<div class="owner-verified">✓</div>
+</div>
+<div class="card-footer">
+<div class="card-rating">
+<div class="stars-row">
+<span class="star-i">★</span><span class="star-i">★</span><span class="star-i">★</span><span class="star-i">★</span><span class="star-i">★</span>
+</div>
+<span class="rating-val">4.8</span>
+<span class="rating-cnt">(52 відг.)</span>
+</div>
+<div class="card-price">
+<div class="price-val">12 000 ₴</div>
+<div class="price-unit">за годину</div>
+</div>
+</div>
+<div class="card-actions">
+<button class="btn-request">Залишити запит</button>
+<button class="btn-msg">💬</button>
+</div>
+</div>
+
+<!-- CARD 2 — Rolls Royce -->
+<div class="card">
+<div class="card-img-wrap">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/2020_Rolls-Royce_Phantom_Series_II_%28facelift%2C_black%29%2C_front_8.26.19.jpg/640px-2020_Rolls-Royce_Phantom_Series_II_%28facelift%2C_black%29%2C_front_8.26.19.jpg" alt="Rolls Royce" loading="lazy">
+<div class="card-city">📍 Київ</div>
+<div class="card-status-badge badge-new">Новий</div>
+<button class="card-heart fav" onclick="toggleFav(this)">❤️</button>
+</div>
+<div class="card-body">
+<div class="card-cat">Легковий транспорт</div>
+<div class="card-title">Седан Rolls-Royce Phantom</div>
+<div class="card-desc">Прокат авто з водієм. Лімузин для особливих подій, весіль та ділових зустрічей.</div>
+<div class="card-tags">
+<span class="ctag">Прокат авто</span>
+<span class="ctag">З водієм</span>
+<span class="ctag">Від 60 хв</span>
+</div>
+</div>
+<div class="card-owner">
+<div class="owner-ava">🎩</div>
+<div>
+<div class="owner-name-sm">AutoMoto TOR</div>
+<div class="owner-online"><span class="online-dot"></span>Онлайн зараз</div>
+</div>
+<div class="owner-verified">✓</div>
+</div>
+<div class="card-footer">
+<div class="card-rating">
+<div class="stars-row">
+<span class="star-i">★</span><span class="star-i">★</span><span class="star-i">★</span><span class="star-i">★</span><span class="star-i">★</span>
+</div>
+<span class="rating-val">4.9</span>
+<span class="rating-cnt">(43 відг.)</span>
+</div>
+<div class="card-price">
+<div class="price-val">2 000 ₴</div>
+<div class="price-unit">за годину</div>
+</div>
+</div>
+<div class="card-actions">
+<button class="btn-request">Забронювати</button>
+<button class="btn-msg">💬</button>
+</div>
+</div>
+
+<!-- CARD 3 — Combine harvester -->
+<div class="card">
+<div class="card-img-wrap">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Claas_Lexion_760_Terra_Trac.jpg/640px-Claas_Lexion_760_Terra_Trac.jpg" alt="Комбайн" loading="lazy">
+<div class="card-city">📍 Київ</div>
+<div class="card-status-badge badge-top">ТОП</div>
+<button class="card-heart" onclick="toggleFav(this)">🤍</button>
 </div>
 <div class="card-body">
 <div class="card-cat">Сільськогосподарська</div>
-<div class="card-title">Трактор John Deere 6130R</div>
-<div class="card-desc">Потужний трактор для оранки, боронування та польових робіт. Є досвідчений оператор.</div>
+<div class="card-title">Комбайн зернозбиральний Claas</div>
+<div class="card-desc">Сучасний комбайн для збирання врожаю. З досвідченим оператором. GPS-навігація.</div>
 <div class="card-tags">
-<span class="tag">З оператором</span>
-<span class="tag">200 л.с.</span>
-<span class="tag">GPS навігація</span>
+<span class="ctag">3 оператори</span>
+<span class="ctag">200 л.с.</span>
+<span class="ctag">GPS-навіг.</span>
 </div>
+</div>
+<div class="card-owner">
+<div class="owner-ava">🌾</div>
+<div>
+<div class="owner-name-sm">Василь Ковальчук</div>
+<div class="owner-online" style="color:var(--text-3)"><span class="online-dot" style="background:var(--text-3)"></span>Був 2 год тому</div>
+</div>
+<div class="owner-verified">✓</div>
 </div>
 <div class="card-footer">
-<div class="price-block">
-<div class="price-label">Вартість</div>
-<div class="price-amount">2 800 ₴</div>
-<div class="price-unit">за робочий день</div>
+<div class="card-rating">
+<div class="stars-row">
+<span class="star-i">★</span><span class="star-i">★</span><span class="star-i">★</span><span class="star-i">★</span><span class="star-i">★</span>
 </div>
-<div class="rating-block">
-<div class="stars">
-<span class="star active">★</span>
-<span class="star active">★</span>
-<span class="star active">★</span>
-<span class="star active">★</span>
-<span class="star active">★</span>
+<span class="rating-val">4.9</span>
+<span class="rating-cnt">(67 відг.)</span>
 </div>
-<div class="rating-row">
-<span class="rating-score">4.9</span>
-<span class="rating-count">(47 відг.)</span>
+<div class="card-price">
+<div class="price-val">4 500 ₴</div>
+<div class="price-unit">за день</div>
 </div>
 </div>
-</div>
-<div class="owner-row">
-<div class="owner-avatar">👨‍🌾</div>
-<div class="owner-info">
-<div class="owner-name">Василь Ковальчук</div>
-<div class="owner-status">
-<span class="status-dot"></span>
-Онлайн зараз
-</div>
-</div>
-<div class="verified-badge">✓ Верифіковано</div>
-</div>
-<div class="card-action">
-<button class="btn-book">📅 Забронювати</button>
-<button class="btn-contact">💬</button>
+<div class="card-actions">
+<button class="btn-request">Забронювати</button>
+<button class="btn-msg">💬</button>
 </div>
 </div>
 
-<!-- CARD 2: CRANE — TOP -->
-
+<!-- CARD 4 — Private Jet -->
 <div class="card">
-<div class="card-img">
-<div class="card-img-bg"></div>
-<div class="card-img-glow"></div>
-<div class="card-emoji">🏗️</div>
-<div class="badge-top">⭐ ТОП</div>
-<div class="badge-city">📍 Дніпро</div>
-<div class="heart-btn active" onclick="toggleHeart(this)">♥</div>
+<div class="card-img-wrap">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Cessna_Citation_XLS%2B_%28N526QS%29.jpg/640px-Cessna_Citation_XLS%2B_%28N526QS%29.jpg" alt="Cessna" loading="lazy">
+<div class="card-city">📍 Київ</div>
+<div class="card-status-badge" style="background:linear-gradient(135deg,#F59E0B,#EF4444);color:#fff;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;padding:3px 9px;border-radius:6px;">ПРЕМІУМ</div>
+<button class="card-heart" onclick="toggleFav(this)">🤍</button>
+</div>
+<div class="card-body">
+<div class="card-cat">Авіація · Приватний рейс</div>
+<div class="card-title">Cessna Citation XLS+</div>
+<div class="card-desc">Бізнес-авіація для корпоративних перельотів по Україні та Європі. Пілот і стюардеса.</div>
+<div class="card-tags">
+<span class="ctag">3 оператори</span>
+<span class="ctag">8 місць</span>
+<span class="ctag">Бізнес-клас</span>
+</div>
+</div>
+<div class="card-owner">
+<div class="owner-ava">🛫</div>
+<div>
+<div class="owner-name-sm">UkrAir Charter</div>
+<div class="owner-online"><span class="online-dot"></span>Онлайн зараз</div>
+</div>
+<div class="owner-verified">✓</div>
+</div>
+<div class="card-footer">
+<div class="card-rating">
+<div class="stars-row">
+<span class="star-i">★</span><span class="star-i">★</span><span class="star-i">★</span><span class="star-i">★</span><span class="star-i">★</span>
+</div>
+<span class="rating-val">5.0</span>
+<span class="rating-cnt">(11 відг.)</span>
+</div>
+<div class="card-price">
+<div class="price-val">54 500 ₴</div>
+<div class="price-unit">за годину</div>
+</div>
+</div>
+<div class="card-actions">
+<button class="btn-request">Залишити запит</button>
+<button class="btn-msg">💬</button>
+</div>
+</div>
+
+</div><!-- /cards-grid -->
+```
+
+</div>
+</section>
+
+<!-- AD BLOCK 1 -->
+
+<div class="ad-block">
+<div class="container">
+<div class="ad-unit">
+<span class="ad-label">Реклама</span>
+<span class="ad-placeholder">Google AdSense 728×90</span>
+</div>
+</div>
+</div>
+
+<!-- ════ NEW LISTINGS ════ -->
+
+<section class="listings-section" style="padding-top:32px;">
+<div class="container">
+<div class="sec-header">
+<div>
+<div class="sec-eyebrow">Щойно додано</div>
+<h2 class="section-title">Нова техніка</h2>
+</div>
+<a href="#" class="see-all">Переглянути всі →</a>
+</div>
+
+```
+<div class="cards-grid">
+<!-- CARD 5 — Motorcycle service -->
+<div class="card">
+<div class="card-img-wrap">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/2006-Suzuki-GSX-R600-Red.jpg/640px-2006-Suzuki-GSX-R600-Red.jpg" alt="Мотоцикл" loading="lazy">
+<div class="card-city">📍 Київ</div>
+<div class="card-status-badge badge-new">Новий</div>
+<button class="card-heart" onclick="toggleFav(this)">🤍</button>
+</div>
+<div class="card-body">
+<div class="card-cat">Мотоцикли · Спортивний</div>
+<div class="card-title">Мотоцикл спортивний Suzuki</div>
+<div class="card-desc">Оренда спортбайка. Майстер-клас їзди на мотоциклі від досвідченого інструктора.</div>
+<div class="card-tags">
+<span class="ctag">Майстер-клас</span>
+<span class="ctag">Від 30 хв</span>
+</div>
+</div>
+<div class="card-owner">
+<div class="owner-ava">🏍️</div>
+<div>
+<div class="owner-name-sm">MotoRide UA</div>
+<div class="owner-online"><span class="online-dot"></span>Онлайн зараз</div>
+</div>
+<div class="owner-verified">✓</div>
+</div>
+<div class="card-footer">
+<div class="card-rating">
+<div class="stars-row">
+<span class="star-i">★</span><span class="star-i">★</span><span class="star-i">★</span><span class="star-i">★</span><span class="star-i">★</span>
+</div>
+<span class="rating-val">4.9</span>
+<span class="rating-cnt">(3 відг.)</span>
+</div>
+<div class="card-price">
+<div class="price-val">2 500 ₴</div>
+<div class="price-unit">за день</div>
+</div>
+</div>
+<div class="card-actions">
+<button class="btn-request">Забронювати</button>
+<button class="btn-msg">💬</button>
+</div>
+</div>
+
+<!-- CARD 6 — Honda rental -->
+<div class="card">
+<div class="card-img-wrap">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Honda_CB650R_2019_%2848133056672%29.jpg/640px-Honda_CB650R_2019_%2848133056672%29.jpg" alt="Honda" loading="lazy">
+<div class="card-city">📍 Київ</div>
+<div class="card-status-badge badge-new">Новий</div>
+<button class="card-heart" onclick="toggleFav(this)">🤍</button>
+</div>
+<div class="card-body">
+<div class="card-cat">Мотоцикли · Прокат</div>
+<div class="card-title">Honda CB650R — Прокат</div>
+<div class="card-desc">Сучасний нейкед-байк в ідеальному стані. Зручний для міста та трас. Без застави.</div>
+<div class="card-tags">
+<span class="ctag">Без водія</span>
+<span class="ctag">650 куб.</span>
+<span class="ctag">Права кат. А</span>
+</div>
+</div>
+<div class="card-owner">
+<div class="owner-ava">🏍️</div>
+<div>
+<div class="owner-name-sm">MotoRent Kyiv</div>
+<div class="owner-online"><span class="online-dot"></span>Онлайн зараз</div>
+</div>
+<div class="owner-verified">✓</div>
+</div>
+<div class="card-footer">
+<div class="card-rating">
+<div class="stars-row">
+<span class="star-i">★</span><span class="star-i">★</span><span class="star-i">★</span><span class="star-i">★</span><span class="star-e">★</span>
+</div>
+<span class="rating-val">4.3</span>
+<span class="rating-cnt">(7 відг.)</span>
+</div>
+<div class="card-price">
+<div class="price-val">850 ₴</div>
+<div class="price-unit">за добу</div>
+</div>
+</div>
+<div class="card-actions">
+<button class="btn-request">Забронювати</button>
+<button class="btn-msg">💬</button>
+</div>
+</div>
+
+<!-- CARD 7 — Motorhome -->
+<div class="card">
+<div class="card-img-wrap">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Winnebago_Access_motorhome_%28front%29%2C_July_2011.jpg/640px-Winnebago_Access_motorhome_%28front%29%2C_July_2011.jpg" alt="Автобудинок" loading="lazy">
+<div class="card-city">📍 Київ</div>
+<div class="card-status-badge badge-new">Новий</div>
+<button class="card-heart" onclick="toggleFav(this)">🤍</button>
+</div>
+<div class="card-body">
+<div class="card-cat">Автобуси · Кемпер</div>
+<div class="card-title">Автобудинок Winnebago Access</div>
+<div class="card-desc">Комфортний автобудинок для подорожей. Повністю обладнана кухня і спальня.</div>
+<div class="card-tags">
+<span class="ctag">5 місць</span>
+<span class="ctag">Кухня</span>
+<span class="ctag">Від 3 днів</span>
+</div>
+</div>
+<div class="card-owner">
+<div class="owner-ava">🚐</div>
+<div>
+<div class="owner-name-sm">GoldRay Travel</div>
+<div class="owner-online" style="color:var(--text-3)"><span class="online-dot" style="background:var(--text-3)"></span>Був 3 год тому</div>
+</div>
+<div class="owner-verified">✓</div>
+</div>
+<div class="card-footer">
+<div class="card-rating">
+<div class="stars-row">
+<span class="star-i">★</span><span class="star-i">★</span><span class="star-i">★</span><span class="star-i">★</span><span class="star-e">★</span>
+</div>
+<span class="rating-val">4.4</span>
+<span class="rating-cnt">(13 відг.)</span>
+</div>
+<div class="card-price">
+<div class="price-val">2 500 ₴</div>
+<div class="price-unit">за добу</div>
+</div>
+</div>
+<div class="card-actions">
+<button class="btn-request">Забронювати</button>
+<button class="btn-msg">💬</button>
+</div>
+</div>
+
+<!-- CARD 8 — Crane -->
+<div class="card">
+<div class="card-img-wrap">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/LTM_1025-2.1_mobile_crane.jpg/640px-LTM_1025-2.1_mobile_crane.jpg" alt="Кран" loading="lazy">
+<div class="card-city">📍 Харків</div>
+<div class="card-status-badge badge-new">Новий</div>
+<button class="card-heart" onclick="toggleFav(this)">🤍</button>
 </div>
 <div class="card-body">
 <div class="card-cat">Будівельна техніка</div>
 <div class="card-title">Автокран Liebherr LTM 1025 · 25т</div>
-<div class="card-desc">Оренда автокрана з досвідченим оператором. Підйом до 25 тонн. Виїзд по місту та області.</div>
+<div class="card-desc">Оренда автокрана з досвідченим оператором. До 25 тонн. Виїзд за місто. Є вся документація.</div>
 <div class="card-tags">
-<span class="tag">З оператором</span>
-<span class="tag">25 тонн</span>
-<span class="tag">Виїзд за місто</span>
+<span class="ctag">3 оператори</span>
+<span class="ctag">25 тонн</span>
+<span class="ctag">Виїзд за місто</span>
 </div>
+</div>
+<div class="card-owner">
+<div class="owner-ava">🏗️</div>
+<div>
+<div class="owner-name-sm">Kraft Steel</div>
+<div class="owner-online"><span class="online-dot"></span>Онлайн зараз</div>
+</div>
+<div class="owner-verified">✓</div>
 </div>
 <div class="card-footer">
-<div class="price-block">
-<div class="price-label">Вартість</div>
-<div class="price-amount">4 500 ₴</div>
-<div class="price-unit">за робочий день</div>
+<div class="card-rating">
+<div class="stars-row">
+<span class="star-i">★</span><span class="star-i">★</span><span class="star-i">★</span><span class="star-i">★</span><span class="star-i">★</span>
 </div>
-<div class="rating-block">
-<div class="stars">
-<span class="star active">★</span>
-<span class="star active">★</span>
-<span class="star active">★</span>
-<span class="star active">★</span>
-<span class="star active">★</span>
+<span class="rating-val">4.9</span>
+<span class="rating-cnt">(28 відг.)</span>
 </div>
-<div class="rating-row">
-<span class="rating-score">5.0</span>
-<span class="rating-count">(31 відг.)</span>
-</div>
-</div>
-</div>
-<div class="owner-row">
-<div class="owner-avatar">👷</div>
-<div class="owner-info">
-<div class="owner-name">БудТехСервіс ТОВ</div>
-<div class="owner-status">
-<span class="status-dot offline"></span>
-Був годину тому
-</div>
-</div>
-<div class="verified-badge">✓ Верифіковано</div>
-</div>
-<div class="card-action">
-<button class="btn-book">📅 Забронювати</button>
-<button class="btn-contact">💬</button>
-</div>
-</div>
-
-<!-- CARD 3: HELICOPTER — PREMIUM -->
-
-<div class="card">
-<div class="card-img">
-<div class="card-img-bg"></div>
-<div class="card-img-glow"></div>
-<div class="card-emoji">🚁</div>
-<div class="badge-top badge-premium">✈ ПРЕМІУМ</div>
-<div class="badge-city">📍 Київ</div>
-<div class="heart-btn" onclick="toggleHeart(this)">♡</div>
-</div>
-<div class="card-body">
-<div class="card-cat">Авіація</div>
-<div class="card-title">Гелікоптер Robinson R44 · Екскурсія</div>
-<div class="card-desc">Оглядовий політ над Києвом з досвідченим пілотом. До 3 пасажирів. Тривалість від 30 хв.</div>
-<div class="card-tags">
-<span class="tag">З пілотом</span>
-<span class="tag">3 пасажири</span>
-<span class="tag">Від 30 хв</span>
-</div>
-</div>
-<div class="card-footer">
-<div class="price-block">
-<div class="price-label">Вартість</div>
-<div class="price-amount premium">12 000 ₴</div>
-<div class="price-unit">за годину</div>
-</div>
-<div class="rating-block">
-<div class="stars">
-<span class="star active">★</span>
-<span class="star active">★</span>
-<span class="star active">★</span>
-<span class="star active">★</span>
-<span class="star">★</span>
-</div>
-<div class="rating-row">
-<span class="rating-score">4.8</span>
-<span class="rating-count">(19 відг.)</span>
-</div>
-</div>
-</div>
-<div class="owner-row">
-<div class="owner-avatar">✈️</div>
-<div class="owner-info">
-<div class="owner-name">SkyTour Ukraine</div>
-<div class="owner-status">
-<span class="status-dot"></span>
-Онлайн зараз
-</div>
-</div>
-<div class="verified-badge">✓ Верифіковано</div>
-</div>
-<div class="card-action">
-<button class="btn-book">📋 Залишити запит</button>
-<button class="btn-contact">💬</button>
-</div>
-</div>
-
-<!-- CARD 4: YACHT — NEW -->
-
-<div class="card">
-<div class="card-img">
-<div class="card-img-bg"></div>
-<div class="card-img-glow"></div>
-<div class="card-emoji">⛵</div>
-<div class="badge-top badge-new">🆕 НОВИЙ</div>
-<div class="badge-city">📍 Одеса</div>
-<div class="heart-btn" onclick="toggleHeart(this)">♡</div>
-</div>
-<div class="card-body">
-<div class="card-cat">Водний транспорт</div>
-<div class="card-title">Яхта Beneteau Oceanis 45</div>
-<div class="card-desc">Комфортна яхта для морських прогулянок вздовж узбережжя. Є капітан і екіпаж.</div>
-<div class="card-tags">
-<span class="tag">З капітаном</span>
-<span class="tag">8 місць</span>
-<span class="tag">Каюта</span>
-</div>
-</div>
-<div class="card-footer">
-<div class="price-block">
-<div class="price-label">Вартість</div>
-<div class="price-amount">18 000 ₴</div>
+<div class="card-price">
+<div class="price-val">4 500 ₴</div>
 <div class="price-unit">за день</div>
 </div>
-<div class="rating-block">
-<div class="stars">
-<span class="star active">★</span>
-<span class="star active">★</span>
-<span class="star active">★</span>
-<span class="star active">★</span>
-<span class="star active">★</span>
 </div>
-<div class="rating-row">
-<span class="rating-score">5.0</span>
-<span class="rating-count">(3 відг.)</span>
-</div>
-</div>
-</div>
-<div class="owner-row">
-<div class="owner-avatar">⚓</div>
-<div class="owner-info">
-<div class="owner-name">Марина Яхт Клуб</div>
-<div class="owner-status">
-<span class="status-dot"></span>
-Онлайн зараз
-</div>
-</div>
-<div class="verified-badge">✓ Верифіковано</div>
-</div>
-<div class="card-action">
-<button class="btn-book">📋 Залишити запит</button>
-<button class="btn-contact">💬</button>
+<div class="card-actions">
+<button class="btn-request">Забронювати</button>
+<button class="btn-msg">💬</button>
 </div>
 </div>
 
-<!-- CARD 5: PRIVATE JET — PREMIUM -->
-
-<div class="card">
-<div class="card-img">
-<div class="card-img-bg"></div>
-<div class="card-img-glow"></div>
-<div class="card-emoji">✈️</div>
-<div class="badge-top badge-premium">✈ ПРЕМІУМ</div>
-<div class="badge-city">📍 Київ</div>
-<div class="heart-btn" onclick="toggleHeart(this)">♡</div>
-</div>
-<div class="card-body">
-<div class="card-cat">Авіація · Приватний рейс</div>
-<div class="card-title">Cessna Citation XLS+ · Приватний</div>
-<div class="card-desc">Бізнес-авіація для корпоративних перельотів по Україні та Європі. Пілот і стюардеса.</div>
-<div class="card-tags">
-<span class="tag">З пілотом</span>
-<span class="tag">8 пасажирів</span>
-<span class="tag">Бізнес клас</span>
-</div>
-</div>
-<div class="card-footer">
-<div class="price-block">
-<div class="price-label">Від</div>
-<div class="price-amount premium">$4 500</div>
-<div class="price-unit">за льотну годину</div>
-</div>
-<div class="rating-block">
-<div class="stars">
-<span class="star active">★</span>
-<span class="star active">★</span>
-<span class="star active">★</span>
-<span class="star active">★</span>
-<span class="star active">★</span>
-</div>
-<div class="rating-row">
-<span class="rating-score">5.0</span>
-<span class="rating-count">(8 відг.)</span>
-</div>
-</div>
-</div>
-<div class="owner-row">
-<div class="owner-avatar">🛫</div>
-<div class="owner-info">
-<div class="owner-name">UkrAir Charter</div>
-<div class="owner-status">
-<span class="status-dot"></span>
-Онлайн зараз
-</div>
-</div>
-<div class="verified-badge">✓ Верифіковано</div>
-</div>
-<div class="card-action">
-<button class="btn-book">📋 Залишити запит</button>
-<button class="btn-contact">💬</button>
-</div>
-</div>
-
-<!-- CARD 6: MOTORCYCLE — RENTAL -->
-
-<div class="card">
-<div class="card-img">
-<div class="card-img-bg"></div>
-<div class="card-img-glow"></div>
-<div class="card-emoji">🏍️</div>
-<div class="badge-top" style="background:#8892A4;color:#0F1117;">БЕЗ ВОДІЯ</div>
-<div class="badge-city">📍 Львів</div>
-<div class="heart-btn" onclick="toggleHeart(this)">♡</div>
-</div>
-<div class="card-body">
-<div class="card-cat">Прокат · Мотоцикли</div>
-<div class="card-title">Honda CB650R · Прокат</div>
-<div class="card-desc">Сучасний нейкед-байк в ідеальному стані. Права категорії А обов'язкові. Без застави.</div>
-<div class="card-tags">
-<span class="tag">Без водія</span>
-<span class="tag">650 куб.</span>
-<span class="tag">Права кат. А</span>
-</div>
-</div>
-<div class="card-footer">
-<div class="price-block">
-<div class="price-label">Вартість</div>
-<div class="price-amount">850 ₴</div>
-<div class="price-unit">за добу</div>
-</div>
-<div class="rating-block">
-<div class="stars">
-<span class="star active">★</span>
-<span class="star active">★</span>
-<span class="star active">★</span>
-<span class="star active">★</span>
-<span class="star">★</span>
-</div>
-<div class="rating-row">
-<span class="rating-score">4.7</span>
-<span class="rating-count">(22 відг.)</span>
-</div>
-</div>
-</div>
-<div class="owner-row">
-<div class="owner-avatar">🏍️</div>
-<div class="owner-info">
-<div class="owner-name">MotoRent Lviv</div>
-<div class="owner-status">
-<span class="status-dot offline"></span>
-Відповість завтра
-</div>
-</div>
-<div class="verified-badge">✓ Верифіковано</div>
-</div>
-<div class="card-action">
-<button class="btn-book">📅 Забронювати</button>
-<button class="btn-contact">💬</button>
-</div>
-</div>
+</div><!-- /cards-grid -->
+```
 
 </div>
+</section>
 
-<div class="divider"></div>
+<!-- ════ HOW IT WORKS ════ -->
 
-<!-- SECTION: INBOX -->
+<section class="how-section">
+<div class="container">
+<div class="how-eyebrow">Як це працює</div>
+<h2 class="how-title">Три кроки до оренди</h2>
+<div class="how-grid">
+<div class="how-card">
+<div class="how-icon-wrap how-icon-1">🔍</div>
+<div class="how-step-num">Крок 01</div>
+<div class="how-card-title">Знайди потрібну техніку</div>
+<p class="how-card-desc">Вибери місто, категорію і дату. Переглядай оголошення з фото, цінами та відгуками від реальних клієнтів.</p>
+</div>
+<div class="how-card">
+<div class="how-icon-wrap how-icon-2">💬</div>
+<div class="how-step-num">Крок 02</div>
+<div class="how-card-title">Зв'яжись з власником</div>
+<p class="how-card-desc">Напиши або подзвони власнику напряму. Уточни деталі, домовся про час та умови оренди.</p>
+</div>
+<div class="how-card">
+<div class="how-icon-wrap how-icon-3">⭐</div>
+<div class="how-step-num">Крок 03</div>
+<div class="how-card-title">Орендуй і залиш відгук</div>
+<p class="how-card-desc">Отримай техніку, виконай задачу. Після оренди залиш чесний відгук — допоможи іншим зробити вибір.</p>
+</div>
+</div>
+</div>
+</section>
 
-<div class="section-label" style="max-width:1100px;margin:0 auto 20px;">Вхідні повідомлення</div>
+<!-- AD BLOCK 2 -->
 
-<div class="inbox-demo">
-<div class="inbox-header">
-<div class="inbox-title">Вхідні</div>
-<div class="inbox-badge">3 нових</div>
-</div>
-
-<div class="msg-item unread">
-<div class="msg-avatar msg-avatar-bg-1">
-👨‍🌾
-<div class="msg-online"></div>
-</div>
-<div class="msg-content">
-<div class="msg-row1">
-<div class="msg-name">Василь Ковальчук</div>
-<div class="msg-time">10:42</div>
-</div>
-<div class="msg-tech">🚜 Трактор John Deere 6130R</div>
-<div class="msg-preview unread-text">Доброго дня! Так, трактор вільний 15 числа. Пишіть деталі</div>
-</div>
-<div class="msg-count">2</div>
-</div>
-
-<div class="msg-item unread">
-<div class="msg-avatar msg-avatar-bg-2">
-✈️
-<div class="msg-online"></div>
-</div>
-<div class="msg-content">
-<div class="msg-row1">
-<div class="msg-name">SkyTour Ukraine</div>
-<div class="msg-time">09:15</div>
-</div>
-<div class="msg-tech">🚁 Гелікоптер Robinson R44</div>
-<div class="msg-preview unread-text">Ваш запит підтверджено! Зустрічаємось на майданчику о 10:00</div>
-</div>
-<div class="msg-count">1</div>
-</div>
-
-<div class="msg-item unread">
-<div class="msg-avatar msg-avatar-bg-3">
-⚓
-</div>
-<div class="msg-content">
-<div class="msg-row1">
-<div class="msg-name">Марина Яхт Клуб</div>
-<div class="msg-time">Вчора</div>
-</div>
-<div class="msg-tech">⛵ Яхта Beneteau Oceanis 45</div>
-<div class="msg-preview unread-text">Доброго вечора! Яхта доступна 20-22 серпня. Ціна для вас...</div>
-</div>
-<div class="msg-count">1</div>
-</div>
-
-<div class="msg-item">
-<div class="msg-avatar msg-avatar-bg-4">
-👷
-</div>
-<div class="msg-content">
-<div class="msg-row1">
-<div class="msg-name">БудТехСервіс ТОВ</div>
-<div class="msg-time">Пн</div>
-</div>
-<div class="msg-tech">🏗️ Автокран Liebherr 25т</div>
-<div class="msg-preview">Дякуємо за замовлення! Будемо на об'єкті о 8:00</div>
+<div class="ad-block" style="background:var(--bg-gray);">
+<div class="container">
+<div class="ad-unit" style="background:#fff;">
+<span class="ad-label">Реклама</span>
+<span class="ad-placeholder">Google AdSense 728×90</span>
 </div>
 </div>
 </div>
 
-<div class="divider"></div>
+<!-- ════ OWNER CTA ════ -->
 
-<!-- SECTION: UI ELEMENTS -->
+<section class="owner-cta">
+<div class="container">
+<div class="owner-banner">
+<div class="owner-content">
+<div class="owner-eyebrow">Для власників техніки</div>
+<h2 class="owner-title">Твоя техніка заробляє<br>поки ти відпочиваєш</h2>
+<p class="owner-desc">Розміти одну одиницю техніки безкоштовно. Без ФОП — лише перевірка документів. Отримуй замовлення від клієнтів у твоєму місті.</p>
+</div>
+<div class="owner-right">
+<a href="#" class="btn-owner-main">Розмістити техніку →</a>
+<div class="owner-note">✓ Безкоштовно · ✓ Без ФОП · ✓ Швидка реєстрація</div>
+</div>
+</div>
+</div>
+</section>
 
-<div class="section-label" style="max-width:1100px;margin:0 auto 20px;">Кнопки та статуси</div>
+<!-- ════ FOOTER ════ -->
 
-<div class="ui-row">
-<button class="ui-btn-primary">Забронювати</button>
-<button class="ui-btn-ghost">Залишити запит</button>
-<button class="ui-btn-danger">Скасувати</button>
-<span class="status-pill status-available">● Доступна</span>
-<span class="status-pill status-busy">● Зайнята</span>
-<span class="status-pill status-unavail">● Недоступна</span>
+<footer>
+<div class="container">
+<div class="footer-grid">
+<div>
+<div class="footer-logo">🐎 <span>Pixe</span></div>
+<p class="footer-desc">Сервіс оренди техніки та послуг. Від легкового транспорту до важкої техніки, від яхт до авіапослуг.</p>
+<div class="footer-socials">
+<a href="#" class="soc-btn">f</a>
+<a href="#" class="soc-btn">in</a>
+<a href="#" class="soc-btn">tg</a>
+<a href="#" class="soc-btn">yt</a>
+</div>
+</div>
+<div class="footer-col">
+<h4>Техніка</h4>
+<ul>
+<li><a href="#">Будівельна</a></li>
+<li><a href="#">Сільськогосподарська</a></li>
+<li><a href="#">Вантажна</a></li>
+<li><a href="#">Авіація</a></li>
+<li><a href="#">Автобуси</a></li>
+<li><a href="#">Мотоцикли</a></li>
+<li><a href="#">Водний транспорт</a></li>
+<li><a href="#">Авто/кадіа</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Pixe.com для клієнтів</h4>
+<ul>
+<li><a href="#">Як орендувати</a></li>
+<li><a href="#">Каталог послуг</a></li>
+<li><a href="#">Пошук по місту</a></li>
+<li><a href="#">Відгуки та рейтинги</a></li>
+<li><a href="#">Мобільний додаток</a></li>
+<li><a href="#">Допомога</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Pixe.com для власників</h4>
+<ul>
+<li><a href="#">Розмістити техніку</a></li>
+<li><a href="#">Тарифи розміщення</a></li>
+<li><a href="#">Реклама і топ</a></li>
+<li><a href="#">Верифікація</a></li>
+<li><a href="#">Особистий кабінет</a></li>
+<li><a href="#">Блог</a></li>
+<li><a href="#">Вакансії</a></li>
+</ul>
+</div>
 </div>
 
-<div class="divider"></div>
+```
+<div class="footer-bottom">
+<div class="footer-copy">© 2026 Pixe.com · Всі права захищені </div>
+<div class="footer-links">
+<a href="#">Умови користування</a>
+<a href="#">Конфіденційність</a>
+<a href="#">Cookies</a>
+</div>
+</div>
+```
 
-<!-- SECTION: COLOR PALETTE -->
-
-<div class="section-label" style="max-width:1100px;margin:0 auto 20px;">Палітра Dark Steel</div>
-
-<div class="palette-section">
-<div class="palette-grid">
-<div class="swatch">
-<div class="swatch-color" style="background:#0F1117"></div>
-<div class="swatch-info"><div class="swatch-name">BG Primary</div><div class="swatch-hex">#0F1117</div></div>
 </div>
-<div class="swatch">
-<div class="swatch-color" style="background:#161B27"></div>
-<div class="swatch-info"><div class="swatch-name">BG Secondary</div><div class="swatch-hex">#161B27</div></div>
-</div>
-<div class="swatch">
-<div class="swatch-color" style="background:#1C2333"></div>
-<div class="swatch-info"><div class="swatch-name">Card BG</div><div class="swatch-hex">#1C2333</div></div>
-</div>
-<div class="swatch">
-<div class="swatch-color" style="background:#00D4FF"></div>
-<div class="swatch-info"><div class="swatch-name">Accent</div><div class="swatch-hex">#00D4FF</div></div>
-</div>
-<div class="swatch">
-<div class="swatch-color" style="background:#00FF94"></div>
-<div class="swatch-info"><div class="swatch-name">Success</div><div class="swatch-hex">#00FF94</div></div>
-</div>
-<div class="swatch">
-<div class="swatch-color" style="background:#FFB800"></div>
-<div class="swatch-info"><div class="swatch-name">Star / Warn</div><div class="swatch-hex">#FFB800</div></div>
-</div>
-<div class="swatch">
-<div class="swatch-color" style="background:#FF2D55"></div>
-<div class="swatch-info"><div class="swatch-name">Heart / Danger</div><div class="swatch-hex">#FF2D55</div></div>
-</div>
-<div class="swatch">
-<div class="swatch-color" style="background:#2A3347"></div>
-<div class="swatch-info"><div class="swatch-name">Border</div><div class="swatch-hex">#2A3347</div></div>
-</div>
-</div>
-</div>
+</footer>
 
 <script>
-function toggleHeart(btn) {
+/* Toggle filter chips */
+function toggleChip(btn) {
 btn.classList.toggle('active');
-btn.textContent = btn.classList.contains('active') ? '♥' : '♡';
+}
+
+/* Toggle type buttons */
+document.querySelectorAll('.toggle-btn').forEach(btn => {
+btn.addEventListener('click', function() {
+this.closest('.toggle-group').querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+this.classList.add('active');
+});
+});
+
+/* Toggle category chips */
+document.querySelectorAll('.cat-chip').forEach(chip => {
+chip.addEventListener('click', function() {
+document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
+this.classList.add('active');
+});
+});
+
+/* Toggle heart */
+function toggleFav(btn) {
+btn.classList.toggle('fav');
+btn.textContent = btn.classList.contains('fav') ? '❤️' : '🤍';
+}
+
+/* Dynamic subcategories */
+const subCats = {
+agri: ['Трактори','Комбайни','Сівалки','Обприскувачі','Культиватори','Косарки'],
+build: ['Автокрани','Екскаватори','Бульдозери','Навантажувачі','Автовишки','Бетономішалки'],
+cargo: ['Тентовані','Самоскиди','Рефрижератори','Контейнеровози','Маніпулятори','Евакуатори'],
+water: ['Яхти','Катери','Човни','Теплоходи','Гідроцикли'],
+air: ['Гелікоптери','Легкі літаки','Бізнес-джети','Парапланери'],
+car: ['Седани','Позашляховики','Мінівени','Лімузини','Кабріолети'],
+bus: ['Мікроавтобуси','Середні автобуси','Великі автобуси','Туристичні','VIP'],
+moto: ['Спортбайки','Крузери','Ендуро','Скутери','Квадроцикли'],
+special: ['Інкасація','Охорона','Техдопомога','Автовишки','Компресори','Генератори'],
+};
+
+function showSubCat() {
+const main = document.getElementById('mainCat').value;
+const sub = document.getElementById('subCat');
+sub.innerHTML = '<option value="">Підкатегорія</option>';
+if (subCats[main]) {
+subCats[main].forEach(s => {
+const o = document.createElement('option');
+o.value = s.toLowerCase();
+o.textContent = s;
+sub.appendChild(o);
+});
+}
 }
 </script>
 
